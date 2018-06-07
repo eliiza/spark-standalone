@@ -1,7 +1,6 @@
 FROM eliiza/rstudio:latest
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y procps
 
 # upload Spark config
 ADD conf/spark-defaults.conf /usr/local/spark/conf/spark-defaults.conf
@@ -18,3 +17,4 @@ ENV SPARK_WORKER_WEBUI_PORT 8081
 EXPOSE 8080 4040 8081 7077 6066
 
 WORKDIR /
+CMD ["/usr/local/spark/sbin/docker-master.sh"]
